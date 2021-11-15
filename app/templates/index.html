@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}GraphiQL Explorer{% endblock %}
+{% block content %}
+<div class="container my-4">
+    <h1>GraphiQL Explorer</h1>
+    {{ super() }}
+    
+    <form method="post" class="mb-5" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        {{ form.url.label }}
+        {{ form.url(class="form-control" + (" is-invalid" if form.url.errors else ""), placeholder="https://example.com/graphql") }}
+
+        {% if form.url.errors %}
+            {% for error in form.url.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <br>
+        {{ form.checkbox(class="form-check-input") }}
+        {{ form.checkbox.label }}
+        <br>
+        {{ form.file(class="form-control", style="display: none") }}
+        <br>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+
+    <script>
+        const file = document.getElementById("file")
+
+        document.getElementById("checkbox").onclick = function () {
+            if (this.checked) {
+                // Show
+                file.style.display = "";
+            } else {
+                // Hide
+                file.style.display = "none";
+            }
+        };
+    </script>
+
+    <h2>How to setup (Bypass CORS Errors)</h2>
+    <a href="/help/1" class="btn btn-warning"><b>Solution 1: </b>Disable all browser security with a command (always works)</a>
+    <br>
+    <br>
+    <a href="/help/2" class="btn btn-warning"><b>Solution 2: </b>Disable CORS using an extension (doesn't always work)</a>
+    
+    <br>
+</div>
+{% endblock %}

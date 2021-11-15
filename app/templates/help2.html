@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}GraphiQL Explorer - Help 1{% endblock %}
+{% block content %}
+<div class="container my-4">
+    <a href="/" class="btn btn-primary">Go back</a>
+    <br>
+    <br>
+    <h1><b>Solution 2: </b>Disable CORS using an extension (doesn't always work)</h1>
+    <br>
+    <p>
+        When you first use this tool you will likely get the following error:
+        <pre><code>{
+    "message": "Failed to fetch",
+    "stack": "TypeError: Failed to fetch"
+}</code></pre>
+        This is because this tool requires fetching data from a GraphQL API, but the endpoint does not always set the <code>Access-Control-Allow-Origin</code> header.<br>
+    </p>
+    <br>
+    <p>
+        You will need to install the <a target="_blank" href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf">Allow CORS: Access-Control-Allow-Origin</a>
+        extension in Chrome. This bypasses the normal protection temporarily to allow this tool to make the necessary requests. <br>
+        <small><a target="_blank" href="https://medium.com/geekculture/bypassing-cors-with-a-google-chrome-extension-7f95fd953612">Source</a></small><br>
+        <img class="rounded border img-fluid" src="{{ url_for('static', filename='cors-extension.png') }}" alt="[Image showing CORS extension in Chrome]">
+    </p>
+    <br>
+    <p>
+        In the settings of this extention you will also need to turn on the <code>Access-Control-Allow-Headers</code> to make the prefetch request the GraphiQL does work.<br>
+        If you don't set this you will still get a CORS error<br>
+        <small><a target="_blank" href="https://stackoverflow.com/questions/25727306/request-header-field-access-control-allow-headers-is-not-allowed-by-access-contr">Source</a></small><br>
+        <img class="rounded border img-fluid" src="{{ url_for('static', filename='allow-headers.png') }}" alt="[Image showing Access-Control-Allow-Headers option]">
+    </p>
+    <br>
+    <p>
+        Also, don't forget to actually turn it on by clicking on the extention, and then on the big C logo on the left.<br>
+        Now you can finally put in a url and explore it with all the neat functions of GraphiQL
+    </p>
+</div>
+{% endblock %}

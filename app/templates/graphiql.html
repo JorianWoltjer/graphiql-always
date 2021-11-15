@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/graphiql/graphiql.min.css" rel="stylesheet" />
+    <title>GraphiQL Explorer</title>
+</head>
+<body style="margin: 0;">
+    <div id="graphiql" style="height: 100vh"></div>
+
+    <script crossorigin src="https://unpkg.com/react/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/graphiql/graphiql.min.js"></script>
+
+    <style>
+        .title {
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        const fetcher = (n, a) => {
+            const introspection = GraphiQL.createFetcher({ url: "{{ '/introspection' if custom_introspection else url }}" })
+            const response = GraphiQL.createFetcher({ url: "{{ url }}" })
+        
+            if (n.operationName === "IntrospectionQuery") {
+                return introspection(n, a)
+            } else {
+                return response(n, a)
+            }
+        }
+
+        ReactDOM.render(React.createElement(GraphiQL, { fetcher: fetcher }), document.getElementById("graphiql"));
+    </script>
+
+    <script>
+        var graphiql_title = document.getElementsByClassName('title')[0]
+        graphiql_title.title = "Back to home"
+        graphiql_title.onclick = function () {
+            document.location.href = '/'
+        }
+    </script>
+</body>
+</html>
