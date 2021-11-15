@@ -6,6 +6,8 @@ This means you'll be able to use the code completion and documentation visualiza
 
 Sometimes GraphQL APIs also don't allow introspection, but using tools like [clairvoyance](https://github.com/nikitastupin/clairvoyance) you can brute-force some of the fields. With this tool you can also import the results of these tools by simply selecting a file to take the introspection from.
 
+This application is running on Heroku over at <https://j0r1an-graphiql-explorer.herokuapp.com/>
+
 ## Setup Browser
 
 To setup your browser to allow requesting resources cross-origin you can look at the `/help/1` and `/help/2` pages.
