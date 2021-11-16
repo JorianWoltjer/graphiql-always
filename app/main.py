@@ -50,7 +50,7 @@ def introspection():
 
 @app.route('/help/1')
 def help1():
-    url = f"{request.scheme}://{request.host}/"
+    url = f"https://{request.host}/"
     
     return render_template('help1.html', url=url)
 
