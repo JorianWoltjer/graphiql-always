@@ -1,4 +1,4 @@
-# GraphiQL Explorer
+# Graph*i*QL Explorer
 
 This tool allows you to explore any GraphQL API, like it also uses Graph*i*QL. This is very useful for security testing an API from the outside.
 
