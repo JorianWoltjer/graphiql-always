@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 app.config["SECRET_KEY"] = os.environ["SECRET_KEY"]
 app.config["SESSION_TYPE"] = "filesystem"
+app.config["SESSION_FILE_DIR"] = "/tmp/flask_session"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=5)
 app.config["SESSION_FILE_THRESHOLD"] = 100
 
