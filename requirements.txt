@@ -2,4 +2,3 @@ flask
 flask_session
 flask_wtf
 wtforms
-waitress

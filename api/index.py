@@ -1,11 +1,10 @@
-from waitress import serve
 from flask import Flask, render_template, session, redirect, url_for
 from flask_session import Session
 from flask.globals import request
 from datetime import timedelta
 import os
 
-from forms import URLForm
+from api.forms import URLForm
 
 app = Flask(__name__)
 
@@ -60,7 +59,3 @@ def help1():
 @app.route("/help/2")
 def help2():
     return render_template("help2.html")
-
-
-if __name__ == "__main__":
-    serve(app)

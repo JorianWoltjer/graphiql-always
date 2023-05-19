@@ -36,3 +36,11 @@ After clicking on the Connect button, you will be connected to the endpoint and 
 ![image](https://user-images.githubusercontent.com/26067369/142004899-74fd5b99-2bcc-4a4f-b1a0-1ef963eca239.png)
 
 Now you can send any query you want to the endpoint, and see the result on the right. 
+
+## Development
+
+Now that the app is running on vercel, it can be simulated using the following command during development:
+
+```
+$ vercel dev
+```
