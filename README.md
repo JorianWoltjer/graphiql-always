@@ -6,7 +6,7 @@ This means you'll be able to use the code completion and documentation visualiza
 
 Sometimes GraphQL APIs also don't allow introspection, but using tools like [clairvoyance](https://github.com/nikitastupin/clairvoyance) you can brute-force some of the fields. With this tool you can also import the results of these tools by simply selecting a file to take the introspection from.
 
-This application is running on Heroku over at <https://j0r1an-graphiql-explorer.herokuapp.com/>
+This application is running on Vercel over at <https://graphiql-explorer-delta.vercel.app/>
 
 ## Setup Browser
 
@@ -24,7 +24,7 @@ As an example, lets try to connect to the Hackerone GraphQL API.
 First open the tool with the command to bypass security features:
 
 ```cmd
-"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="%TEMP%\Chrome" https://j0r1an-graphiql-explorer.herokuapp.com/
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="%TEMP%\Chrome" https://graphiql-explorer-delta.vercel.app/
 ```
 
 Then input the URL to the GraphQL endpoint you want to test:
