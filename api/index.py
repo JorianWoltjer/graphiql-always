@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, redirect, url_for
 from flask_session import Session
 from flask.globals import request
 from datetime import timedelta
+import json
 import os
 
 from api.forms import URLForm
@@ -27,7 +28,7 @@ def index():
 
         session["url"] = form.url.data
         if form.checkbox.data:  # Custom introspection from file
-            session["introspection"] = request.files[form.file.name].read()
+            session["introspection"] = json.load(request.files[form.file.name])
 
         return redirect(url_for("graphiql"))
 

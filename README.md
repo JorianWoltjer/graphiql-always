@@ -19,7 +19,7 @@ If you want to want to use a custom introspection file, you can select the optio
 
 ## Example
 
-As an example, lets try to connect to the Hackerone GraphQL API.
+As an example, lets try to connect to the HackerOne GraphQL API.
 
 First open the tool with the command to bypass security features:
 
@@ -41,6 +41,12 @@ Now you can send any query you want to the endpoint, and see the result on the r
 
 Now that the app is running on vercel, it can be simulated using the following command during development:
 
+```sh
+vercel dev
 ```
-$ vercel dev
+
+If this doesn't work, you can instead it with your local Python like so:
+
+```sh
+gunicorn api.index:app -b 0.0.0.0:3000
 ```
