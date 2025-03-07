@@ -24,18 +24,28 @@ As an example, lets try to connect to the HackerOne GraphQL API.
 First open the tool with the command to bypass security features:
 
 ```cmd
-"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="%TEMP%\Chrome" https://graphiql-explorer-delta.vercel.app/
+chrome --disable-web-security --user-data-dir="%TEMP%\Chrome" https://graphiql-explorer-delta.vercel.app/
 ```
 
 Then input the URL to the GraphQL endpoint you want to test:
 
-![image](https://user-images.githubusercontent.com/26067369/142003992-5b4317f3-baeb-484c-b529-52aeb8effce5.png)
+![](docs/hackerone-input.png)
 
-After clicking on the Connect button, you will be connected to the endpoint and should see code completion and an interactive schema on the right:
+In the DevTools console, you'll notice that we are **unauthenticated**, because the new browser uses an empty profile. Log into hackerone (or copy your cookies over) and reload the application.
 
-![image](https://user-images.githubusercontent.com/26067369/142004899-74fd5b99-2bcc-4a4f-b1a0-1ef963eca239.png)
+Now, requests to the `/graphql` endpoint succesfully receive cookies, but another error response appears:
 
-Now you can send any query you want to the endpoint, and see the result on the right. 
+> Invalid CSRF token
+
+We need to send a special `x-csrf-token` header for this implementation. You can easily grab one from `view-source:https://hackerone.com/hacker_dashboard/overview` while logged-in and click the cog icon to open *Connection settings*:
+
+![](docs/connection-settings.png)
+
+In here, you can add an extra header hardcoded to your CSRF token. Then *Save*. Finally, when you reload you should see succesful `/graphql` requests appear in the DevTools Network tab. From this point, you can run any queries and see the output:
+
+![](docs/example-query.png)
+
+There are still error messages about "Schema Introspection", this is because HackerOne does not allow this feature. Instead, if you can get your hands on a `schema.json` file somehow (eg. using [clairvoyance](https://github.com/nikitastupin/clairvoyance)), you can upload it on the first screen by checking the "Use custom introspection data from file" box. This should spoof the introspection information so you can get auto-completion on your queries.
 
 ## Development
 

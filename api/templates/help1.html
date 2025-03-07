@@ -19,7 +19,7 @@
         But we actually want to bypass this restriction because we want to be able to interact with any endpoint, whether it was designed for it or not.<br>
         To disable this security we'll need to start the browser with some special arguments. I found that the following works well (in <b>Command Prompt</b>):
     </p>
-    <b><code id="command">"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="%TEMP%\Chrome" {{ url }}</code></b>
+    <b><code id="command">chrome --disable-web-security --user-data-dir="%TEMP%\Chrome" {{ url }}</code></b>
     <button type="button" id="copy-button" class="btn btn-secondary btn-sm" style="margin-left: 2ch;" onclick="navigator.clipboard.writeText(document.getElementById('command').innerText)">Copy</button><br><br>
     <p>
         This command works for Chrome on Windows. You might need to replace some of these values for your own.<br>
